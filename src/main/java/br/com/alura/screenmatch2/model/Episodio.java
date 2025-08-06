@@ -9,14 +9,15 @@ public class Episodio {
     private String titulo;
     private Integer numeroEpisodio;
     private Double avaliacao;
-    private LocalDate dataLancamento
+    private LocalDate dataLancamento;
 
     public Episodio(Integer numeroTemporada, DadosEpisodio dadosEpisodio) {
         this.temporada = numeroTemporada;
         this.titulo = dadosEpisodio.titulo();
         this.numeroEpisodio = dadosEpisodio.numero();
-        this.avaliacao = dadosEpisodio.avaliacao();
-    });
+        this.avaliacao = Double.valueOf(dadosEpisodio.avaliacao());
+        this.dataLancamento = LocalDate.parse(dadosEpisodio.dataLancamento());
+    }
 
     public Integer getTemporada() {
         return temporada;
@@ -56,5 +57,14 @@ public class Episodio {
 
     public void setDataLancamento(LocalDate dataLancamento) {
         this.dataLancamento = dataLancamento;
+    }
+
+    @Override
+    public String toString() {
+        return "Temporada :" + temporada +
+                "\nTitulo :'" + titulo + '\'' +
+                "\nNumeroEpisodio :" + numeroEpisodio +
+                "\nAvaliação :" + avaliacao +
+                "\nData de Lançamento :" + dataLancamento;
     }
 }
